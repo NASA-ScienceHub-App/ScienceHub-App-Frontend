@@ -1,8 +1,8 @@
 import {
     HomeOutlined,
     ProjectOutlined,
-    UserOutlined,
     UploadOutlined,
+    UserOutlined,
 } from "@ant-design/icons";
 import { Avatar, Menu, Space } from "antd";
 import Sider from "antd/es/layout/Sider";
@@ -54,7 +54,7 @@ export default function Sidebar({ collapsed }) {
                         {
                             key: "/form-publication",
                             icon: <UploadOutlined />,
-                            label: "Criar Publicação",
+                            label: "Publicar",
                         },
                     ]}
                 />
