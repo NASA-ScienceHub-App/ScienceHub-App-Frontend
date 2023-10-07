@@ -5,22 +5,22 @@ import earth_img from '../../assets/earth.jpg';
 
 const Publication = ({ data }) => {
 
-  const {userName, project, title, description, categories, userImg, publicationImg} = data;
+  const {userName, project, title, description, categories/*, userImg, publicationImg*/} = data;
 
   // Para Teste (remover dps)
-  // userImg = user_img;
-  // publicationImg = earth_img;
+  const userImg = user_img;
+  const publicationImg = earth_img;
 
-  const navigate = useNavigate()
+  const navigate = useNavigate;
 
   return (
     <div className="publication">
-
+      
       <div className="user-info">
 
         <img className="user-img" src={userImg} alt="Imagem do Usuário" />
         <p className="user-name">
-          User Name /{" "} {/* {userName} */}
+          User Name / {"  "} {/* {userName} */}
         </p>
         <span className="project-link" onClick={() => navigate('view-projects/2')}>
           Project Name{/* {projectName} */}

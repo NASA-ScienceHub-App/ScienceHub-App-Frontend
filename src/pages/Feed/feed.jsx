@@ -5,6 +5,7 @@ import './feed.css'
 export default function Feed() {
 
     const [publications, setPublications] = useState([]);
+    // TODO: get username
 
     // Chamada à API do Backend
     useEffect(() => {
@@ -13,7 +14,7 @@ export default function Feed() {
 
             axios({
                 method: "post",
-                url: "http://localhost:8000/",
+                url: "http://localhost:8000/", // TODO: aterar API
                 data: {
                     username: userName
                 },
@@ -29,14 +30,25 @@ export default function Feed() {
         fetchData();
     }, []);
 
+    const data = {
+        categories: [
+        {
+            name: "Cloud"
+        },
+        {
+            name: "Cybersecurity"
+        }]
+    }
+
     return (
-        <>
+        <div className='feed-screen'>
             {publications.map((publication) => (
                 <Publication
                     key={publication.id}
                     data={publication}
                 />
             ))}
-        </>
+            <Publication data={data} />
+        </div>
     );
 }
