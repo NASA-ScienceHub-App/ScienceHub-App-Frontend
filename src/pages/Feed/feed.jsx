@@ -1,44 +1,48 @@
 import { useState } from "react";
 import Publication from "../../components/Publication/Publication";
 import "./feed.css";
+import { useEffect } from "react";
+import axios from "axios";
 
 export default function Feed() {
     const [publications, setPublications] = useState([]);
     // TODO: get username
+    const userName = "Gustavo"
 
     // Chamada à API do Backend
-    // useEffect(() => {
+    useEffect(() => {
 
-    //     const fetchData = async () => {
+        const fetchData = async () => {
+            axios({
+                method: "post",
+                url: "http://localhost:8000/projetos/feed-pesquisador/",
+                withCredentials: false,
+                data: {
+                    "apelido": userName
+                },
+            }).then(response => {
+                setPublications(response.data);
+                console.log(response.data);
 
-    //         axios({
-    //             method: "post",
-    //             url: "http://localhost:8000/", // TODO: aterar API
-    //             data: {
-    //                 username: userName
-    //             },
-    //         }).then(response => {
-    //             setPublications(response.data);
-    //             // console.log(response.data);
+            }).catch(error => {
+                console.error('Erro ao obter publicações', error);
+            })
+        };
 
-    //         }).catch(error => {
-    //             console.error('Erro ao obter publicações', error);
-    //         })
-    //     };
+        fetchData();
+    }, []);
 
-    //     fetchData();
-    // }, []);
 
-    const data = {
-        categories: [
-            {
-                name: "Cloud",
-            },
-            {
-                name: "Cybersecurity",
-            },
-        ],
-    };
+    // const data = {
+    //     categories: [
+    //         {
+    //             name: "Cloud",
+    //         },
+    //         {
+    //             name: "Cybersecurity",
+    //         },
+    //     ],
+    // };
 
     return (
         <div className="feed-screen">
@@ -49,11 +53,11 @@ export default function Feed() {
                     <Publication key={publication.id} data={publication} />
                 ))}
             </div>
+            {/* <Publication data={data} />
             <Publication data={data} />
             <Publication data={data} />
             <Publication data={data} />
-            <Publication data={data} />
-            <Publication data={data} />
+            <Publication data={data} /> */}
         </div>
     );
 }

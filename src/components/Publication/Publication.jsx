@@ -28,7 +28,7 @@ const Publication = ({ data }) => {
                     alt="Imagem do Usuário"
                 />
                 <p className="user-name">
-                    User Name / {"  "} {/* {userName} */}
+                    User Name / {" "} {/* {userName} */}
                 </p>
                 <a
                     className="project-link"
