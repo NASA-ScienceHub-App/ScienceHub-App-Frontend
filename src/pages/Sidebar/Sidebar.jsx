@@ -1,12 +1,15 @@
-import { Menu } from "antd";
+import {
+    HomeOutlined,
+    ProjectOutlined,
+    UserOutlined,
+    UploadOutlined,
+} from "@ant-design/icons";
+import { Avatar, Menu, Space } from "antd";
 import Sider from "antd/es/layout/Sider";
 import React from "react";
-import {
-    UploadOutlined,
-    UserOutlined,
-    VideoCameraOutlined,
-} from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
+
+import "./styles.css";
 
 export default function Sidebar({ collapsed }) {
     const navigate = useNavigate();
@@ -18,34 +21,44 @@ export default function Sidebar({ collapsed }) {
     return (
         <Sider trigger={null} collapsible collapsed={collapsed}>
             <div className="demo-logo-vertical" />
-            <Menu
-                theme="dark"
-                mode="inline"
-                defaultSelectedKeys={["1"]}
-                onClick={navegateToPage}
-                items={[
-                    {
-                        key: "/",
-                        icon: <UserOutlined />,
-                        label: "Home",
-                    },
-                    {
-                        key: "/projetos",
-                        icon: <VideoCameraOutlined />,
-                        label: "Projetos",
-                    },
-                    {
-                        key: "/profile",
-                        icon: <UploadOutlined />,
-                        label: "Perfil",
-                    },
-                    {
-                        key: "/form-publication",
-                        icon: <UploadOutlined />,
-                        label: "Criar Publicação",
-                    },
-                ]}
-            />
+            <Space direction="vertical" size={16}>
+                <Space direction="horizontal" size={1} align="center">
+                    <Avatar
+                        className="view-project-avatar"
+                        size="large"
+                        icon={<UserOutlined />}
+                    />
+                    <h2 className="username">Usuario</h2>
+                </Space>
+                <Menu
+                    theme="dark"
+                    mode="inline"
+                    defaultSelectedKeys={["1"]}
+                    onClick={navegateToPage}
+                    items={[
+                        {
+                            key: "/home",
+                            icon: <HomeOutlined />,
+                            label: "Home",
+                        },
+                        {
+                            key: "/my-projects",
+                            icon: <ProjectOutlined />,
+                            label: "Projetos",
+                        },
+                        {
+                            key: "/profile",
+                            icon: <UserOutlined />,
+                            label: "Perfil",
+                        },
+                        {
+                            key: "/form-publication",
+                            icon: <UploadOutlined />,
+                            label: "Criar Publicação",
+                        },
+                    ]}
+                />
+            </Space>
         </Sider>
     );
 }
