@@ -44,3 +44,12 @@
     object-fit: cover;
     border-radius: 0.6rem;
 }
+
+.category {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #9fd9ec;
+    border-radius: 4px;
+    margin-right: 8px; /* Espaçamento entre as categorias */
+    margin-top: 8px; /* Espaçamento superior para separar do título da publicação */
+  }
