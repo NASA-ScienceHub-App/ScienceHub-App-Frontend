@@ -42,13 +42,25 @@ export default function Feed() {
 
     return (
         <div className='feed-screen'>
-            {publications.map((publication) => (
-                <Publication
-                    key={publication.id}
-                    data={publication}
-                />
-            ))}
-            <Publication data={data} />
+
+            <div className='filters'>
+
+            </div>
+
+            <div className='feed'>
+                {publications.map((publication) => (
+                    <Publication
+                        key={publication.id}
+                        data={publication}
+                    />
+                ))}
+            </div>
+            <Publication data={data}/>
+            <Publication data={data}/>
+            <Publication data={data}/>
+            <Publication data={data}/>
+            <Publication data={data}/>
+
         </div>
     );
 }

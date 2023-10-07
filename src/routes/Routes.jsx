@@ -15,7 +15,7 @@ const Routering = createBrowserRouter([
     },
     {
         path: "/feed",
-        element: <Home chilldren={<Feed/>} />
+        element: <Home chilldren={<Feed />} scroll={true} />
     },
 ]);
 
