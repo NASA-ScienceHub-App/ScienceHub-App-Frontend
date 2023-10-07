@@ -39,6 +39,11 @@ export default function Sidebar({ collapsed }) {
                         icon: <UploadOutlined />,
                         label: "Perfil",
                     },
+                    {
+                        key: "/feed",
+                        icon: <UploadOutlined />,
+                        label: "Feed",
+                    },
                 ]}
             />
         </Sider>
