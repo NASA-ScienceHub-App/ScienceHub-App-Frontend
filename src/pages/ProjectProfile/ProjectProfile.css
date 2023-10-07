@@ -1,0 +1,21 @@
+/* Estilos CSS para o retângulo com cantos arredondados */
+.project-container {
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  /* Estilos CSS para cada projeto dentro do retângulo */
+  .project-profile {
+    width: calc(50% - 10px); /* 50% para que haja dois projetos por linha com espaço entre eles */
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+  

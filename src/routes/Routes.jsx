@@ -2,6 +2,7 @@ import React from "react";
 import { createBrowserRouter } from "react-router-dom";
 import Home from "../pages/Home/Home.jsx";
 import Projects from "../pages/Projects/Projects.jsx";
+import UserProfile from "../pages/Profile/profile.jsx";
 
 const Routering = createBrowserRouter([
     {
@@ -13,8 +14,8 @@ const Routering = createBrowserRouter([
         element: <Home chilldren={<Projects />} />,
     },
     {
-        path: "/perfil",
-        element: <UserProfile />,
+        path: "/profile",
+        element: <Home chilldren={<UserProfile />} />,
     }
 ]);
 

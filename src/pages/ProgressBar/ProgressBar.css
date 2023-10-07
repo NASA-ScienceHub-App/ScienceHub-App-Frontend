@@ -1,0 +1,12 @@
+/* Em um arquivo CSS separado ou no seu arquivo de estilos */
+.progress-bar {
+  background-color: #ccc; /* Cor de fundo da barra de progresso */
+  height: 20px; /* Altura da barra de progresso */
+  border-radius: 4px; /* Borda arredondada */
+}
+
+.progress {
+  height: 100%;
+  background-color: #007bff; /* Cor da barra de progresso preenchida */
+  border-radius: 4px; /* Borda arredondada */
+}
