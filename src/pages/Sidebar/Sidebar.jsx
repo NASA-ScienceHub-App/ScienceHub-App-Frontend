@@ -39,6 +39,11 @@ export default function Sidebar({ collapsed }) {
                         icon: <UploadOutlined />,
                         label: "Perfil",
                     },
+                    {
+                        key: "/form-publication",
+                        icon: <UploadOutlined />,
+                        label: "Criar Publicação",
+                    },
                 ]}
             />
         </Sider>
