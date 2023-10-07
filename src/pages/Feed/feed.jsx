@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import Publication from '../../components/Publication/Publication'
 import './feed.css'
+import axios from 'axios';
 
 export default function Feed() {
 
