@@ -36,7 +36,12 @@ export default function Sidebar({ collapsed }) {
                             label: "Home",
                         },
                         {
-                            key: "/view-projetos",
+                            key: "/my-projects",
+                            icon: <ProjectOutlined />,
+                            label: "Projetos",
+                        },
+                        {
+                            key: "/view-projects",
                             icon: <ProjectOutlined />,
                             label: "Projetos",
                         },

@@ -14,12 +14,12 @@ const Routering = createBrowserRouter([
         path: "/home",
         element: <Home />,
     },
-    // {
-    //     path: "/projetos",
-    //     element: <Home chilldren={<Projects />} />,
-    // },
     {
-        path: "/view-projetos",
+        path: "/my-projects",
+        element: <Home chilldren={<Projects />} />,
+    },
+    {
+        path: "/view-projects",
         element: <Home chilldren={<ViewProject />} />,
     },
 ]);
