@@ -3,8 +3,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    /* background: url("../../imgs/background-login.jpeg"); */
 }
+
 body {
     background-image: url("../../imgs/background2.jpeg");
     background-repeat: no-repeat, no-repeat;

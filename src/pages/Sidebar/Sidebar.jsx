@@ -1,11 +1,7 @@
+import { HomeOutlined, ProjectOutlined, UserOutlined } from "@ant-design/icons";
 import { Menu } from "antd";
 import Sider from "antd/es/layout/Sider";
 import React from "react";
-import {
-    UploadOutlined,
-    UserOutlined,
-    VideoCameraOutlined,
-} from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 
 export default function Sidebar({ collapsed }) {
@@ -26,17 +22,18 @@ export default function Sidebar({ collapsed }) {
                 items={[
                     {
                         key: "/home",
-                        icon: <UserOutlined />,
+                        icon: <HomeOutlined />,
                         label: "Home",
                     },
                     {
                         key: "/projetos",
-                        icon: <VideoCameraOutlined />,
+                        icon: <ProjectOutlined />,
                         label: "Projetos",
                     },
                     {
                         key: "/profile",
-                        icon: <UploadOutlined />,
+                        icon: <UserOutlined />,
+                        // icon: <UploadOutlined />,
                         label: "Perfil",
                     },
                 ]}
