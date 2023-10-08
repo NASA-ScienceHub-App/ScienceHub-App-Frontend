@@ -6,6 +6,7 @@ import FormPublication from "../pages/FormPublication/FormPublication.jsx";
 import Login from "../pages/Login/Login.jsx";
 import ViewProject from "../pages/ViewProject/ViewProject.jsx";
 import Feed from "../pages/Feed/feed.jsx";
+import Profile from "../pages/Profile/Profile.jsx";
 
 const Routering = createBrowserRouter([
     {
@@ -19,6 +20,10 @@ const Routering = createBrowserRouter([
     {
         path: "/my-projects",
         element: <Home chilldren={<Projects />} />,
+    },
+    {
+        path: "/profile",
+        element: <Home chilldren={<Profile />} />,
     },
     {
         path: "/form-publication",
