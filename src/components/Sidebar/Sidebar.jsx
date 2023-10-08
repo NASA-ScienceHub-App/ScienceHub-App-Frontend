@@ -56,6 +56,11 @@ export default function Sidebar({ collapsed }) {
                             icon: <UploadOutlined />,
                             label: "Publicar",
                         },
+                        {
+                            key: "/form-project",
+                            icon: <UploadOutlined />,
+                            label: "Novo Projeto",
+                        },
                     ]}
                 />
             </Space>
