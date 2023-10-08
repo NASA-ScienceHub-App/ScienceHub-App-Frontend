@@ -17,55 +17,72 @@ const pesquisador = async () => {
   }
 }
 
+const habilidade = async () => {
+  try {
+    const response = await axios.post('http://localhost:8000/habilidades/pegar-habilidade-pesquer/');
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+}
+
+const projeto = async () => {
+  try {
+    const response = await axios.post('http://localhost:8000/projetos/pegar-projetos-pesquisador/');
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+}
+
+
 function UserProfile() {
   const [user, setUser] = useState(null);
-  
+  const [userSkills, setHabilidade] = useState(null);
+  const [projects, setProjeto] = useState(null);
+
     useEffect(() => {
       pesquisador().then(data => {
         if (data) {
           setUser(data);
         }
       });
+
+      habilidade().then(data => {
+        if (data) {
+          setHabilidade(data);
+        }
+      });
+
+      projeto().then(data => {
+        if (data) {
+          setProjeto(data);
+        }
+      });
+
     }, []);
   // Estrutura de dados representando as habilidades do usuário
   const [showAdditionalSkills, setShowAdditionalSkills] = useState(false);
-  const [newSkill, setNewSkill] = useState({ name: '', level: '' });
-  pesquisador();
-
-  const userSkills = [
-    { name: 'Inglês', level: 'Avançado' },
-    { name: 'Espanhol', level: 'Básico' },
-    { name: 'Alemão', level: 'Intermediário' },
-  ];
+  const [newSkill, setNewSkill] = useState({ habilidade: '', nivel_de_habilidade: '' });
 
   const addNewSkill = () => {
     // Verifica se os campos estão preenchidos
-    if (newSkill.name && newSkill.level) {
+    if (newSkill.habilidade && newSkill.nivel_de_habilidade) {
       userSkills.push(newSkill);
-      setNewSkill({ name: '', level: '' });
+      setNewSkill({ habilidade: '', nivel_de_habilidade: '' });
       setShowAdditionalSkills(false);
     }
   };
 
-  const projects = [
-    {
-      name: 'Projeto 1',
-      description: 'Descrição do Projeto 1'
-    },
-    {
-      name: 'Projeto 2',
-      description: 'Descrição do Projeto 2'
-    },
- 
-  ];
-
   // Função para calcular o progresso com base no nível de habilidade
-  const calculateProgress = (level) => {
-    if (level === 'Avançado') {
+  const calculateProgress = (nivel_de_habilidade) => {
+    if (nivel_de_habilidade === 'Avançado') {
       return 100;
-    } else if (level === 'Básico') {
+    } else if (nivel_de_habilidade === 'Iniciante') {
       return 33; 
-    } else if (level === 'Intermediário') {
+    } else if (nivel_de_habilidade === 'Intermediário') {
         return 66;
     }
   };
@@ -86,9 +103,11 @@ function UserProfile() {
       </div>
 <div className="progress-barr">
   <h2>Habilidades</h2>
+  {user && (
+    <>
   {userSkills.map((skill, index) => (
     <div key={index}>
-      <p>{skill.name} - {skill.level}</p>
+      <p>{skill.habilidade} - {skill.nivel_de_habilidade}</p>
       <ProgressBar progress={calculateProgress(skill.level)} />
     </div>
   ))}
@@ -113,6 +132,8 @@ function UserProfile() {
       <FontAwesomeIcon icon={faPlus} />
     </button>
   )}
+   </>
+      )}
 </div>
 
 <div className="word-cloud">
@@ -120,14 +141,18 @@ function UserProfile() {
 </div>
 
 <div className="show-project-profile">
+{user && (
+    <>
     {projects.map((project, index) => (
       <ProjectProfile
         key={index}
-        name={project.name}
-        description={project.description}
-        onClick={() => handleProjectClick(project.url)}
+        name={project.nome}
+        description={project.descricao}
+        // onClick={() => handleProjectClick(project.url)}
       />
     ))}
+    </>
+      )}
 </div>
 </div>
 
