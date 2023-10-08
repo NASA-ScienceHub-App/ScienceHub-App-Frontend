@@ -7,7 +7,7 @@ import FormProjects from "../pages/FormProject/FormProject.jsx";
 import Login from "../pages/Login/Login.jsx";
 import ViewProject from "../pages/ViewProject/ViewProject.jsx";
 import Feed from "../pages/Feed/feed.jsx";
-import Profile from "../pages/Profile/profile.jsx";
+import Profile from "../pages/Profile/profile1.jsx";
 
 const Routering = createBrowserRouter([
     {
