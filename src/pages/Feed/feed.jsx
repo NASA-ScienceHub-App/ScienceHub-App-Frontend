@@ -6,6 +6,7 @@ import axios from "axios";
 
 export default function Feed() {
     const [publications, setPublications] = useState([]);
+    
     // TODO: get username
     const userName = "Gustavo"
 
