@@ -1,15 +1,16 @@
-import { Card, Collapse, Layout, Space } from "antd";
+import { Button, Card, Collapse, Layout, Space } from "antd";
 import React, { useEffect, useState } from "react";
 import Contributor from "../../components/Contributor/Contributor";
 import Statistics from "../../components/Statistics/Statistics";
 import "./styles.css";
 import Publication from "../../components/Publication/Publication";
+import { useNavigate } from "react-router-dom";
 
-const text = `
-  A dog is a type of domesticated animal.
-  Known for its loyalty and faithfulness,
-  it can be found as a welcome guest in many households across the world.
-`;
+// const text = `
+//   A dog is a type of domesticated animal.
+//   Known for its loyalty and faithfulness,
+//   it can be found as a welcome guest in many households across the world.
+// `;
 
 const data = {
     autor: "Renan",
@@ -20,21 +21,27 @@ const data = {
     titulo: "Publicação",
 }
 
-const items = [
-    {
-        key: '1',
-        label: 'Tarefas',
-        children: <>
-            <Publication key={1} data={data} showButton={true} />
-            <Publication key={1} data={data} showButton={true} />
-        </>,
-    },
-];
 
 export default function ViewProject() {
     const [dataLoaded, setDataLoaded] = useState(true);
     const [dataProjeto, setDataProjeto] = useState({});
     const [dataPesquisador, setDataPesquisador] = useState({});
+    const [dataIssues, setDataIssues] = useState([]);
+
+    const items = [
+        {
+            key: '1',
+            label: 'Tarefas',
+            children: <>
+            <Publication key={1} data={data} showButton={true} />,
+            <Publication key={2} data={data} showButton={true} />,
+            <Publication key={3} data={data} showButton={true} />
+                {/* {dataIssues.map((issue, index) => (
+                    <Publication key={index} data={issue} showButton={true} />
+                ))} */}
+            </>,
+        },
+    ];
 
     async function getProject() {
         const projetoParams = {
@@ -70,15 +77,19 @@ export default function ViewProject() {
 
         setDataPesquisador({ ...data2 });
 
-        const responsePegarIssues = await fetch("http://localhost:8000/projetos/pegar-issues/", {
-            method: "POST", // *GET, POST, PUT, DELETE, etc.
-            headers: {
-                "Content-Type": "application/json",
-                //"pega aqui": JSON.stringify(projetoParams),
-                // 'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            body: JSON.stringify({ apelido: data1.dono }), // body data type must match "Content-Type" header
-        });
+        // const responsePegarIssues = await fetch("http://localhost:8000/projetos/pegar-issues/", {
+        //     method: "POST", // *GET, POST, PUT, DELETE, etc.
+        //     headers: {
+        //         "Content-Type": "application/json",
+        //         //"pega aqui": JSON.stringify(projetoParams),
+        //         // 'Content-Type': 'application/x-www-form-urlencoded',
+        //     },
+        //     body: JSON.stringify({ codigo: "zeScienceHub" }), // body data type must match "Content-Type" header
+        // });
+
+        // const data3 = await responsePegarIssues.json()
+
+        // setDataIssues({ ...data3 });
     }
 
     useEffect(() => {
@@ -87,6 +98,8 @@ export default function ViewProject() {
             setDataLoaded(false);
         }
     }, []);
+
+    const navigate = useNavigate();
 
     return (
         <div className="view-project">
@@ -103,9 +116,10 @@ export default function ViewProject() {
                                 <Contributor username={dataPesquisador.nome} />
                             </div>
                         </Card>
+                        <Button style={{marginLeft: "60px"}} onClick={() => {navigate("/form-publication")}}>Criar Publicação</Button>
                     </Space>
                     <Space style={{ paddingTop: "30px" }}>
-                        <Collapse style={{width: "100vh"}} items={items} defaultActiveKey={['1']} />
+                        <Collapse style={{ width: "100vh" }} items={items} defaultActiveKey={['1']} />
                     </Space>
                 </Layout>
             </div>

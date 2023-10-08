@@ -66,7 +66,7 @@ export default function FormPublication() {
             niveis: niveis
         }
 
-        console.log(titulo + "\n" + tipo + "\n" + info + "\n" + file + "\n" + niveis + "\n" + habilidades);
+        //console.log(titulo + "\n" + tipo + "\n" + info + "\n" + file + "\n" + niveis + "\n" + habilidades);
 
         const response = await fetch("http://localhost:8000/projetos/cadastrar-publicacao/", {
             method: "POST", // *GET, POST, PUT, DELETE, etc.

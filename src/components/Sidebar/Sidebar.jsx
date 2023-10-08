@@ -51,11 +51,11 @@ export default function Sidebar({ collapsed }) {
                             icon: <UserOutlined />,
                             label: "Perfil",
                         },
-                        {
-                            key: "/form-publication",
-                            icon: <UploadOutlined />,
-                            label: "Publicar",
-                        },
+                        // {
+                        //     key: "/form-publication",
+                        //     icon: <UploadOutlined />,
+                        //     label: "Publicar",
+                        // },
                         {
                             key: "/form-project",
                             icon: <UploadOutlined />,

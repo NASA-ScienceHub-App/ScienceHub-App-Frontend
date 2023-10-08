@@ -35,8 +35,8 @@ export default function Profile() {
                     />
                 </div>
             </div>
+            <h3>Projetos fixados</h3>
             <div className="show-project-profile">
-                <ShowProject click={() => navigate("/view-projects")} />
                 <ShowProject click={() => navigate("/view-projects")} />
                 <ShowProject click={() => navigate("/view-projects")} />
                 <ShowProject click={() => navigate("/view-projects")} />
