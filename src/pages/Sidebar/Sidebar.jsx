@@ -1,4 +1,9 @@
-import { HomeOutlined, ProjectOutlined, UserOutlined } from "@ant-design/icons";
+import {
+    HomeOutlined,
+    ProjectOutlined,
+    UploadOutlined,
+    UserOutlined,
+} from "@ant-design/icons";
 import { Avatar, Menu, Space } from "antd";
 import Sider from "antd/es/layout/Sider";
 import React from "react";
@@ -15,6 +20,7 @@ export default function Sidebar({ collapsed }) {
 
     return (
         <Sider trigger={null} collapsible collapsed={collapsed}>
+            <div className="demo-logo-vertical" />
             <Space direction="vertical" size={16}>
                 <Space direction="horizontal" size={1} align="center">
                     <Avatar
@@ -44,6 +50,11 @@ export default function Sidebar({ collapsed }) {
                             key: "/profile",
                             icon: <UserOutlined />,
                             label: "Perfil",
+                        },
+                        {
+                            key: "/form-publication",
+                            icon: <UploadOutlined />,
+                            label: "Publicar",
                         },
                     ]}
                 />

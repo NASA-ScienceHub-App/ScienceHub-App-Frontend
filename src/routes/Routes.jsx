@@ -3,6 +3,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Home from "../pages/Home/Home.jsx";
 import Projects from "../pages/Projects/Projects.jsx";
 import UserProfile from "../pages/Profile/profile.jsx";
+import FormPublication from "../pages/FormPublication/FormPublication.jsx";
 import Login from "../pages/Login/Login.jsx";
 import ViewProject from "../pages/ViewProject/ViewProject.jsx";
 import Feed from "../pages/Feed/feed.jsx";
@@ -23,6 +24,11 @@ const Routering = createBrowserRouter([
     {
         path: "/profile",
         element: <Home chilldren={<UserProfile />} />,
+    
+    },
+    {
+        path: "/form-publication",
+        element: <Home chilldren={<FormPublication />} />,
     },
     {
         path: "/view-projects",
