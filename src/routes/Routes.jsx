@@ -2,11 +2,11 @@ import React from "react";
 import { createBrowserRouter } from "react-router-dom";
 import Home from "../pages/Home/Home.jsx";
 import Projects from "../pages/Projects/Projects.jsx";
-import UserProfile from "../pages/Profile/profile.jsx";
 import FormPublication from "../pages/FormPublication/FormPublication.jsx";
 import Login from "../pages/Login/Login.jsx";
 import ViewProject from "../pages/ViewProject/ViewProject.jsx";
 import Feed from "../pages/Feed/feed.jsx";
+import Profile from "../pages/Profile/Profile.jsx";
 
 const Routering = createBrowserRouter([
     {
@@ -23,8 +23,7 @@ const Routering = createBrowserRouter([
     },
     {
         path: "/profile",
-        element: <Home chilldren={<UserProfile />} />,
-    
+        element: <Home chilldren={<Profile />} />,
     },
     {
         path: "/form-publication",
