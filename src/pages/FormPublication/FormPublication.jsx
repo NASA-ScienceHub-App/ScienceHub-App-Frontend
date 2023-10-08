@@ -25,11 +25,11 @@ for (let i = 10; i < 36; i++) {
     });
 }
 
-export default function Projects() {
+export default function FormPublication() {
     const [form] = Form.useForm();
-    const [habilidades, setHabilidades] = useState(niveisDefault);
-    const [niveis, setNiveis] = useState(habilidadesDefault);
-    const [file, setFile] = useState();
+    const [habilidades, setHabilidades] = useState([]);
+    const [niveis, setNiveis] = useState([]);
+    const [file, setFile] = useState(null);
     const [tagsVisible, setTagsVisible] = useState(false);
 
     const { TextArea } = Input;
@@ -57,7 +57,7 @@ export default function Projects() {
 
         return (
             <Button type="primary" htmlType="submit" disabled={!submittable} onClick={postPublication}>
-                Salvar
+                Publicar
             </Button>
         );
     };
@@ -66,20 +66,40 @@ export default function Projects() {
         const titulo = form.getFieldValue("Titulo");
         const tipo = form.getFieldValue("Tipo");
         const info = form.getFieldValue("Info");
-        //const response = await fetch();
-        console.log(titulo + "\n" + tipo+ "\n" + info + "\n" + "\n" + niveis+ "\n" + habilidades);
+
+        const publicacao = {
+            projeto: 1,
+            tipo: tipo,
+            titulo: titulo,
+            descricao: info
+        }
+
+        const response = await fetch("http://localhost:8000/projetos/cadastrar-publicacao/", {
+            method: "POST", // *GET, POST, PUT, DELETE, etc.
+            headers: {
+                "Content-Type": "application/json",
+                // 'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: JSON.stringify(publicacao), // body data type must match "Content-Type" header
+        });
+
+        //console.log(titulo + "\n" + tipo+ "\n" + info + "\n" + file + "\n" + niveis+ "\n" + habilidades);
     }
 
     useEffect(() => {
     }, [tagsVisible]);
 
-    const handleTagsChange = (values) => {
-        console.log(`lista: ${values}`);
+    const handleHabilidadesChange = (values) => {
+        setHabilidades(values);
+    };
+
+    const handleNiveisChange = (values) => {
+        setNiveis(values);
     };
 
     const handlePubTypeChange = (value) => {
         switch (value) {
-            case "Notícia":
+            case "Noticia":
                 setTagsVisible(false);
                 break;
             case "Recrutamento":
@@ -89,7 +109,7 @@ export default function Projects() {
     };
 
     const handleFileChange = (props) => {
-        console.log(props.file);
+        setFile(props.file);
     }
 
     return (
@@ -112,7 +132,7 @@ export default function Projects() {
                 </Form.Item>
                 <Form.Item name="Tipo" label="Tipo da publicação" style={{ marginRight: "10px" }}>
                     <Select onChange={handlePubTypeChange}>
-                        <Select.Option value="Notícia">Notícia</Select.Option>
+                        <Select.Option value="Noticia">Notícia</Select.Option>
                         <Select.Option value="Recrutamento">Recrutamento</Select.Option>
                     </Select>
                 </Form.Item>
@@ -142,8 +162,8 @@ export default function Projects() {
                                         width: '100%',
                                     }}
                                     placeholder="Selecione habilidades desejadas"
-                                    onChange={handleTagsChange}
-                                    options={habilidades}
+                                    onChange={handleHabilidadesChange}
+                                    options={habilidadesDefault}
                                 />
                             </Space>
                         </Form.Item>
@@ -162,8 +182,8 @@ export default function Projects() {
                                         width: '100%',
                                     }}
                                     placeholder="Selecione níveis desejados"
-                                    onChange={handleTagsChange}
-                                    options={niveis}
+                                    onChange={handleNiveisChange}
+                                    options={niveisDefault}
                                 />
                             </Space>
                         </Form.Item>
