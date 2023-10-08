@@ -71,7 +71,9 @@ export default function FormPublication() {
             projeto: 1,
             tipo: tipo,
             titulo: titulo,
-            descricao: info
+            descricao: info,
+            habilidades: habilidades,
+            niveis: niveis
         }
 
         const response = await fetch("http://localhost:8000/projetos/cadastrar-publicacao/", {
