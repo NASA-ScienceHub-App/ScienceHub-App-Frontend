@@ -6,7 +6,6 @@ import Sidebar from "../Sidebar/Sidebar";
 const { Header, Sider, Content } = Layout;
 
 import "./styles.css";
-import Projects from "../Projects/Projects";
 
 export default function Home({ chilldren, scroll = false }) {
     const [collapsed, setCollapsed] = useState(false);
@@ -41,16 +40,18 @@ export default function Home({ chilldren, scroll = false }) {
                         }}
                     />
                 </Header>
-                {!scroll && <Content
-                    style={{
-                        margin: "24px 16px",
-                        padding: 24,
-                        minHeight: 280,
-                        background: colorBgContainer,
-                    }}
-                >
-                    {chilldren}
-                </Content>}
+                {!scroll && (
+                    <Content
+                        style={{
+                            margin: "24px 16px",
+                            padding: 24,
+                            minHeight: 280,
+                            background: colorBgContainer,
+                        }}
+                    >
+                        {chilldren}
+                    </Content>
+                )}
 
                 {scroll && chilldren}
             </Layout>

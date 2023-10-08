@@ -2,9 +2,13 @@
     gap: 30px;
     width: 100%;
     padding: 0px 50px;
+
     display: flex;
     align-items: center;
     flex-direction: column;
+
+    height: 80vh;
+    overflow-y: auto;
 }
 
 .view-project h1 {

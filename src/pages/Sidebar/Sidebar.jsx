@@ -21,7 +21,8 @@ export default function Sidebar({ collapsed }) {
     return (
         <Sider trigger={null} collapsible collapsed={collapsed}>
             <div className="demo-logo-vertical" />
-            <Space direction="vertical" size={16}>
+
+            <Space direction="vertical" size={12}>
                 <Space direction="horizontal" size={1} align="center">
                     <Avatar
                         className="view-project-avatar"
@@ -33,7 +34,7 @@ export default function Sidebar({ collapsed }) {
                 <Menu
                     theme="dark"
                     mode="inline"
-                    defaultSelectedKeys={["1"]}
+                    defaultSelectedKeys={["/home"]}
                     onClick={navegateToPage}
                     items={[
                         {
