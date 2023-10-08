@@ -1,58 +1,60 @@
-/* Estilos CSS para o retângulo com cantos arredondados */
-/* .project-container {
-    border: 2px solid transparent;
-    border-radius: 10px;
-    padding: 20px;
-    margin-top: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-  
-  /* Estilos CSS para cada projeto dentro do retângulo */
-  /* .project-profile {
-    width: calc(50% - 10px); /* 50% para que haja dois projetos por linha com espaço entre eles */
-    /* margin-bottom: 20px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-  }  */
-  
-  .top-right {
-    position: absolute;
-    top: 20%; /* Ajuste a posição superior conforme necessário */
-    right: 30%; /* Ajuste a posição direita conforme necessário */
-    padding: 20px;   /* Adiciona um espaço em torno do contêiner de projetos */
-    /* Outros estilos de posicionamento, como alinhamento, podem ser adicionados aqui */
-  }
+/* profile.css */
 
-  .mid-left {
-    position: absolute;
-    top: 70%; /* Ajuste a posição superior conforme necessário */
-    /* right: 2%; Ajuste a posição direita conforme necessário */
-    /* padding: 20px;   Adiciona um espaço em torno do contêiner de projetos */
-    /* Outros estilos de posicionamento, como alinhamento, podem ser adicionados aqui */
-  }
+/* Estilos para o container principal */
+.user-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  /* padding: 20px; */
+ } 
 
-  .user-profile img.profile-image {
-    border-radius: 50%;
-    width: 150px; /* Ajuste o tamanho da imagem conforme necessário */
-    height: 150px; /* Ajuste o tamanho da imagem conforme necessário */
-    object-fit: cover; /* Isso garantirá que a imagem seja dimensionada para preencher o círculo */
-  }
+/* Estilos para a foto do perfil */
+.profile-image {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  margin-right: 10px;
+  margin-top: 20px;
+}
 
-  hr {
-    width: 20%;
-    height: 2px;
-    border-style: solid;
-    color: #333;
-  }
+/* Estilos para o contêiner de informações do perfil e habilidades */
+/* .user-info-and-skills {
+  display: flex;
+  flex-direction: column; /* Empilhar elementos verticalmente */
+  /* align-items: flex-start;
+}  */
 
-  .mid-right {
-    position: absolute;
-    top: 70%; /* Ajuste a posição superior conforme necessário */
-    right: 47%; /* Ajuste a posição direita conforme necessário */ 
-    /* padding: 20px;   Adiciona um espaço em torno do contêiner de projetos */
-    /* Outros estilos de posicionamento, como alinhamento, podem ser adicionados aqui */
-  }
+/* Estilos para as informações do perfil */
+.user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.user-info p {
+  margin: 10px 0;
+}
+
+.user-info hr {
+  width: 100%;
+  border: 1px solid #ccc;
+  margin: 10px 0;
+}
+
+/* Estilos para as habilidades */
+.user-skills {
+  text-align: left;
+  margin-top: 20px;
+}
+
+/* Estilos para os projetos à direita */
+.user-projects {
+  text-align: right;
+  margin-top: 20px;
+}
+
+/* Estilos para a WordCloud abaixo dos projetos */
+.word-cloud {
+  text-align: center;
+  margin-top: 20px;
+}

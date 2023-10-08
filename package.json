@@ -10,10 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@ant-design/icons": "^5.2.6",
     "@fortawesome/fontawesome-svg-core": "^6.4.2",
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
-    "@ant-design/icons": "^5.2.6",
     "antd": "^5.9.4",
     "axios": "^1.5.1",
     "chart.js": "^4.4.0",
@@ -22,6 +22,8 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.16.0",
     "react-tagcloud": "^2.3.1",
+    "react-wordcloud": "^1.2.7",
+    "wordcloud2": "^1.0.0",
     "yarn": "^1.22.19"
   },
   "devDependencies": {
