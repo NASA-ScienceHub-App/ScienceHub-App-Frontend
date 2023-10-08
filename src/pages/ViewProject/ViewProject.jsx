@@ -1,8 +1,7 @@
 import { Card } from "antd";
 import React from "react";
-
-import Contributor from "../Contributor/Contributor";
-import Statistics from "../Statistics/Statistics";
+import Contributor from "../../components/Contributor/Contributor";
+import Statistics from "../../components/Statistics/Statistics";
 import "./styles.css";
 
 export default function ViewProject() {
