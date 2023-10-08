@@ -2,7 +2,6 @@ import React from 'react';
 import '../ProgressBar/ProgressBar.css';
 
 function ProgressBar({ progress }) {
-  console.log('Progress:', progress); // Adicione esta linha para verificar o progresso
 
   const progressStyle = {
     width: `${progress}%`,

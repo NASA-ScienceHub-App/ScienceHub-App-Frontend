@@ -1,17 +1,36 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ProgressBar from '../ProgressBar/ProgressBar';
 import WordCloudComponent from './WordCloudComponent';
 import ProjectProfile from '../ProjectProfile/ProjectProfile';
 import './profile.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons'; 
+import  axios  from 'axios';
 
+const pesquisador = async () => {
+  try {
+    const response = await axios.post('http://localhost:8000/pesquisadores/pegar-pesquisador/');
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+}
 
-function UserProfile({ user }) {
+function UserProfile() {
+  const [user, setUser] = useState(null);
+  
+    useEffect(() => {
+      pesquisador().then(data => {
+        if (data) {
+          setUser(data);
+        }
+      });
+    }, []);
   // Estrutura de dados representando as habilidades do usuário
   const [showAdditionalSkills, setShowAdditionalSkills] = useState(false);
   const [newSkill, setNewSkill] = useState({ name: '', level: '' });
-
+  pesquisador();
 
   const userSkills = [
     { name: 'Inglês', level: 'Avançado' },
@@ -54,13 +73,17 @@ function UserProfile({ user }) {
   return (
     <div className="user-profile">
       <div className='user-info'>
-      <img src={user.avatar} alt={`Foto de ${user.name}`} className="profile-image" />
-        <p>{user.name} {user.nickname}</p>
-        <p>Reputação: {user.reputation}</p>
-        <p>{user.email}</p>
+      {user && (
+    <>
+      <img src='/imagem.png' alt={`Foto de ${user.nome}`} className="profile-image" />
+        <p>{user.nome} @{user.apelido}</p>
+        <p>Reputação: {user.inidicacoes}</p>
+        <p>maria@example.com</p>
         <hr />
-        <p>Sobre: {user.description}</p>
-        <p>Formação: <a href={user.education} target="_blank" rel="noopener noreferrer">Currículo Lattes</a></p>
+        <p>Sobre: {user.sobre_mim}</p>
+        <p>Formação: <a href='https://www.lattes.cnpq.br/' target="_blank" rel="noopener noreferrer">Currículo Lattes</a></p>
+        </>
+      )}
       </div>
 <div className="user-skills">
   <h2>Habilidades</h2>
