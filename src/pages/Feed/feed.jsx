@@ -8,7 +8,7 @@ export default function Feed() {
     const [publications, setPublications] = useState([]);
     
     // TODO: get username
-    const userName = "Gustavo"
+    const userName = "lol"
 
     // Chamada à API do Backend
     useEffect(() => {
@@ -50,8 +50,8 @@ export default function Feed() {
             <div className="filters"></div>
 
             <div className="feed">
-                {publications.map((publication) => (
-                    <Publication key={publication.id} data={publication} />
+                {publications.map((publication, index) => (
+                    <Publication key={index} data={publication} />
                 ))}
             </div>
             {/* <Publication data={data} />
