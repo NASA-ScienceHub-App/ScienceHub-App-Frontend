@@ -1,4 +1,15 @@
+@import url('https://fonts.cdnfonts.com/css/nasa');
+
 .username {
     color: white;
     margin-top: 38px;
+    font-family: 'Nasa';
+    font-size: 1.8rem;
+    padding-left: 35px;
+}
+
+.nasa-container {
+    display: flex;
+    justify-items: center;
+    justify-content: center;
 }

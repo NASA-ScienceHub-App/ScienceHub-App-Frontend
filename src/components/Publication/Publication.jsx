@@ -1,12 +1,12 @@
 import { React } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserOutlined } from "@ant-design/icons";
-import { Avatar, Progress } from "antd";
+import { Avatar, Progress, Button } from "antd";
 import earth_img from "../../assets/earth.jpg";
 import user_img from "../../assets/user.png";
 import "./Publication.css";
 
-const Publication = ({ data }) => {
+const Publication = ({ data, showButton }) => {
     const {
         autor,
         projeto,
@@ -38,14 +38,24 @@ const Publication = ({ data }) => {
                     alt="Imagem do Usuário"
                 />
                 <p className="user-name">
-                    {autor}  / {" "}
+                    {autor}
                 </p>
-                <a
-                    className="project-link"
-                    onClick={() => navigate(`/view-projects`)} /* ${projectId} */
-                >
-                    {projeto}
-                </a>
+                {!showButton && (
+                    <>
+                        <a
+                            className="project-link"
+                            onClick={() => navigate(`/view-projects`)} /* ${projectId} */
+                        >
+                         <span style={{color: "black"}}>/</span> {projeto}
+                        </a>
+                    </>
+                )}
+                {showButton && (
+                    <>
+                        <Button style={{ marginLeft: "165px" }}> Contribuir </Button>
+                    </>
+                )}
+
             </div>
 
             <div className="publication-content">
@@ -63,7 +73,7 @@ const Publication = ({ data }) => {
                     src={publicationImg}
                     alt="Imagem da Publicação"
                 />
-                {tipo=="Recrutamento" && (
+                {tipo == "Recrutamento" && (
                     <div>
                         <h4>Habilidades Desejáveis</h4>
                         {habilidades.map((hability, index) => {

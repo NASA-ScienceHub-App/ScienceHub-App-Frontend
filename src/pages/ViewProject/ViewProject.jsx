@@ -1,8 +1,35 @@
-import { Card } from "antd";
+import { Card, Collapse, Layout, Space } from "antd";
 import React, { useEffect, useState } from "react";
 import Contributor from "../../components/Contributor/Contributor";
 import Statistics from "../../components/Statistics/Statistics";
 import "./styles.css";
+import Publication from "../../components/Publication/Publication";
+
+const text = `
+  A dog is a type of domesticated animal.
+  Known for its loyalty and faithfulness,
+  it can be found as a welcome guest in many households across the world.
+`;
+
+const data = {
+    autor: "Renan",
+    projeto: "Nome projeto",
+    descricao: "Descricao",
+    habilidades: [{}, {}],
+    tipo: "Recrutamento",
+    titulo: "Publicação",
+}
+
+const items = [
+    {
+        key: '1',
+        label: 'Tarefas',
+        children: <>
+            <Publication key={1} data={data} showButton={true} />
+            <Publication key={1} data={data} showButton={true} />
+        </>,
+    },
+];
 
 export default function ViewProject() {
     const [dataLoaded, setDataLoaded] = useState(true);
@@ -27,7 +54,7 @@ export default function ViewProject() {
 
         const data1 = await responsePegarProjeto.json()
 
-        setDataProjeto({...data1});
+        setDataProjeto({ ...data1 });
 
         const responsePegarPesquisador = await fetch("http://localhost:8000/pesquisadores/pegar-pesquisador/", {
             method: "POST", // *GET, POST, PUT, DELETE, etc.
@@ -36,12 +63,22 @@ export default function ViewProject() {
                 //"pega aqui": JSON.stringify(projetoParams),
                 // 'Content-Type': 'application/x-www-form-urlencoded',
             },
-            body: JSON.stringify({apelido: data1.dono}), // body data type must match "Content-Type" header
+            body: JSON.stringify({ apelido: data1.dono }), // body data type must match "Content-Type" header
         });
 
         const data2 = await responsePegarPesquisador.json()
 
-        setDataPesquisador({...data2});
+        setDataPesquisador({ ...data2 });
+
+        const responsePegarIssues = await fetch("http://localhost:8000/projetos/pegar-issues/", {
+            method: "POST", // *GET, POST, PUT, DELETE, etc.
+            headers: {
+                "Content-Type": "application/json",
+                //"pega aqui": JSON.stringify(projetoParams),
+                // 'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: JSON.stringify({ apelido: data1.dono }), // body data type must match "Content-Type" header
+        });
     }
 
     useEffect(() => {
@@ -58,13 +95,19 @@ export default function ViewProject() {
                 {dataProjeto.descricao}
             </p>
             <div className="view-project-details">
-                <Card title="Membros do Projeto" width={"50%"}>
-                    <div className="card-members">
-                        <Contributor username={dataPesquisador.nome} />
-                    </div>
-                </Card>
-
-                <Statistics />
+                <Layout style={{ backgroundColor: "white" }}>
+                    <Space>
+                        <Statistics />
+                        <Card title="Membros do Projeto" width={"50%"}>
+                            <div className="card-members">
+                                <Contributor username={dataPesquisador.nome} />
+                            </div>
+                        </Card>
+                    </Space>
+                    <Space style={{ paddingTop: "30px" }}>
+                        <Collapse style={{width: "100vh"}} items={items} defaultActiveKey={['1']} />
+                    </Space>
+                </Layout>
             </div>
         </div>
     );

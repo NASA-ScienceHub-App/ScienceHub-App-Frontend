@@ -22,13 +22,13 @@ export default function Sidebar({ collapsed }) {
         <Sider trigger={null} collapsible collapsed={collapsed}>
             <div className="demo-logo-vertical" />
             <Space direction="vertical" size={16}>
-                <Space direction="horizontal" size={1} align="center">
-                    <Avatar
+                <Space className="nasa-container" direction="horizontal" size={1} align="center">
+                    {/* <Avatar
                         className="view-project-avatar"
                         size="large"
                         icon={<UserOutlined />}
-                    />
-                    <h2 className="username">Usuario</h2>
+                    /> */}
+                    <h2 className="username">NASA</h2>
                 </Space>
                 <Menu
                     theme="dark"

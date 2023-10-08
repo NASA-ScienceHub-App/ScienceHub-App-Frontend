@@ -51,7 +51,7 @@ export default function Feed() {
 
             <div className="feed">
                 {publications.map((publication, index) => (
-                    <Publication key={index} data={publication} />
+                    <Publication key={index} data={publication} showButton={false}/>
                 ))}
             </div>
             {/* <Publication data={data} />
