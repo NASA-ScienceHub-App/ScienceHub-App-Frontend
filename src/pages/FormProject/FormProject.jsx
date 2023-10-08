@@ -102,7 +102,7 @@ export default function FormProject() {
                 <Form.Item>
                     <Space>
                         <SubmitButton form={form} />
-                        <Button htmlType="reset">Cancelar</Button>
+                        <Button htmlType="reset">Limpar</Button>
                     </Space>
                 </Form.Item>
             </Form>

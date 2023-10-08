@@ -6,24 +6,14 @@ import {
     Input,
     Select,
     Upload,
-    Space
+    Space,
+    TreeSelect
 } from 'antd';
 
-const habilidadesDefault = [];
+const habilidadesDefault = [{value: "AWS"}, {value: "Django"}, {value: "Electron"}, {value: "Firebase"}, {value: "Google Services"}, {value: "Java"},
+{value: "Kotlin"}, {value: "Lua"}, {value: "MongoDB"}, {value: "Node"}, {value: "Octave"}];
 
-for (let i = 10; i < 36; i++) {
-    habilidadesDefault.push({
-        value: i.toString(36) + i,
-    });
-}
-
-const niveisDefault = [];
-
-for (let i = 10; i < 36; i++) {
-    niveisDefault.push({
-        value: i.toString(26) + i,
-    });
-}
+const niveisDefault = [{value: "Iniciante"}, {value: "Intermediário"}, {value: "Avançado"}];
 
 export default function FormPublication() {
     const [form] = Form.useForm();
@@ -62,19 +52,21 @@ export default function FormPublication() {
         );
     };
 
-    async function postPublication(){
+    async function postPublication() {
         const titulo = form.getFieldValue("Titulo");
         const tipo = form.getFieldValue("Tipo");
         const info = form.getFieldValue("Info");
 
         const publicacao = {
-            projeto: 1,
+            projeto: "zeScienceHub",
             tipo: tipo,
             titulo: titulo,
             descricao: info,
             habilidades: habilidades,
             niveis: niveis
         }
+
+        console.log(titulo + "\n" + tipo + "\n" + info + "\n" + file + "\n" + niveis + "\n" + habilidades);
 
         const response = await fetch("http://localhost:8000/projetos/cadastrar-publicacao/", {
             method: "POST", // *GET, POST, PUT, DELETE, etc.
@@ -84,8 +76,6 @@ export default function FormPublication() {
             },
             body: JSON.stringify(publicacao), // body data type must match "Content-Type" header
         });
-
-        //console.log(titulo + "\n" + tipo+ "\n" + info + "\n" + file + "\n" + niveis+ "\n" + habilidades);
     }
 
     useEffect(() => {
@@ -143,7 +133,7 @@ export default function FormPublication() {
                 </Form.Item>
                 <Form.Item name="Banner" label="Banner">
                     {/* <Upload action="/upload.do" listType="picture-card"> */}
-                    <Upload maxCount="1" listType="picture-card" beforeUpload={() => {return false;}} onChange={handleFileChange}>
+                    <Upload maxCount="1" listType="picture-card" beforeUpload={() => { return false; }} onChange={handleFileChange}>
                         <PlusOutlined />
                     </Upload>
                 </Form.Item>
@@ -194,7 +184,7 @@ export default function FormPublication() {
                 <Form.Item>
                     <Space>
                         <SubmitButton form={form} />
-                        <Button htmlType="reset">Cancelar</Button>
+                        <Button htmlType="reset">Limpar</Button>
                     </Space>
                 </Form.Item>
             </Form>
