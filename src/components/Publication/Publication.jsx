@@ -12,7 +12,7 @@ const Publication = ({ data }) => {
         project,
         title,
         description,
-        categories,
+        // categories,
         habilities /*, userImg, publicationImg*/,
     } = data;
 
@@ -30,32 +30,26 @@ const Publication = ({ data }) => {
                     alt="Imagem do Usuário"
                 />
                 <p className="user-name">
-                    User Name / {" "} {/* {userName} */}
+                    {userName}  / {" "}
                 </p>
                 <a
                     className="project-link"
                     onClick={() => navigate(`/view-projects`)} /* ${projectId} */
                 >
-                    Project Name{/* {projectName} */}
+                    {projectName}
                 </a>
             </div>
 
             <div className="publication-content">
-                <h2 className="publication-title">Publication Title</h2>{" "}
-                {/* {title} */}
-                {categories.map((category) => (
+                <h2 className="publication-title">{title}</h2>{" "}
+                {/* {categories.map((category) => (
                     <div key={category.name} className="category">
                         {category.name}
                     </div>
-                ))}
+                ))} */}
                 <p className="publication-description">
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem Ipsum has been the industry's
-                    standard dummy text ever since the 1500s, when an unknown
-                    printer took a galley of type and scrambled it to make a
-                    type specimen book
+                    {description}
                 </p>{" "}
-                {/* {description} */}
                 <img
                     className="publication-img"
                     src={publicationImg}
