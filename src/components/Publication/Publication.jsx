@@ -8,13 +8,21 @@ import "./Publication.css";
 
 const Publication = ({ data }) => {
     const {
-        userName,
-        project,
-        title,
-        description,
-        // categories,
-        habilities /*, userImg, publicationImg*/,
+        autor,
+        projeto,
+        descricao,
+        habilidades,
+        tipo,
+        titulo,
+        // autor,
+        // projeto,
+        // titulo,
+        // descricao,
+        // // tipo,
+        // habilities /*, userImg, publicationImg*/,
     } = data;
+
+    //console.log(data)
 
     const userImg = user_img;
     const publicationImg = earth_img;
@@ -30,50 +38,60 @@ const Publication = ({ data }) => {
                     alt="Imagem do Usuário"
                 />
                 <p className="user-name">
-                    {userName}  / {" "}
+                    {autor}  / {" "}
                 </p>
                 <a
                     className="project-link"
                     onClick={() => navigate(`/view-projects`)} /* ${projectId} */
                 >
-                    {projectName}
+                    {projeto}
                 </a>
             </div>
 
             <div className="publication-content">
-                <h2 className="publication-title">{title}</h2>{" "}
+                <h2 className="publication-title">{titulo}</h2>{" "}
                 {/* {categories.map((category) => (
                     <div key={category.name} className="category">
                         {category.name}
                     </div>
                 ))} */}
                 <p className="publication-description">
-                    {description}
+                    {descricao}
                 </p>{" "}
                 <img
                     className="publication-img"
                     src={publicationImg}
                     alt="Imagem da Publicação"
                 />
-                {habilities !== undefined && (
+                {tipo=="Recrutamento" && (
                     <div>
                         <h4>Habilidades Desejáveis</h4>
-                        {habilities.map((hability) => {
-                            if (hability.nivel_de_habilidade === "Avancado") {
-                                <>
-                                    <p>{hability.habilidade}: {hability.nivel_de_habilidade}</p>
-                                    <Progress strokeColor={"red"} percent={0} showInfo={false} />;
-                                </>;
-                            } else if (hability.nivel_de_habilidade === "Intermediario") {
-                                <>
-                                    <p>{hability.habilidade}: {hability.nivel_de_habilidade}</p>
-                                    <Progress strokeColor={"yellow"} percent={0} showInfo={false} />;
-                                </>;
-                            } else if (hability.nivel_de_habilidade === "Iniciante") {
-                                <>
-                                    <p>{hability.habilidade}: {hability.nivel_de_habilidade}</p>
-                                    <Progress strokeColor={"green"} percent={0} showInfo={false} />;
-                                </>;
+                        {habilidades.map((hability, index) => {
+                            // console.log(hability.nivel_da_habilidade);
+                            // console.log(hability.habilidade);
+                            // console.log("----------------------------");
+                            if (hability.nivel_da_habilidade == "Avançado") {
+
+                                return (
+                                    <>
+                                        <p>{hability.habilidade}: {hability.nivel_da_habilidade}</p>
+                                        <Progress key={index} strokeColor={"red"} percent={100} showInfo={false} />
+                                    </>
+                                )
+                            } else if (hability.nivel_da_habilidade == "Intermediário") {
+                                return (
+                                    <>
+                                        <p>{hability.habilidade}: {hability.nivel_da_habilidade}</p>
+                                        <Progress key={index} strokeColor={"yellow"} percent={50} showInfo={false} />
+                                    </>
+                                )
+                            } else if (hability.nivel_da_habilidade == "Iniciante") {
+                                return (
+                                    <>
+                                        <p>{hability.habilidade}: {hability.nivel_da_habilidade}</p>
+                                        <Progress key={index} strokeColor={"green"} percent={25} showInfo={false} />
+                                    </>
+                                )
                             }
 
                             return null;
