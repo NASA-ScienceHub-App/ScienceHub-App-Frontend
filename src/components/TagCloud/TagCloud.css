@@ -1,0 +1,36 @@
+/* src/components/TagCloud.css */
+/* .tag-cloud {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .tag {
+    margin: 5px;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .high-importance {
+    font-size: 18px;
+    color: #ff5733;
+  } */
+
+  /* src/components/TagCloud.css */
+.tag-cloud {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tag {
+  margin: 5px;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+  

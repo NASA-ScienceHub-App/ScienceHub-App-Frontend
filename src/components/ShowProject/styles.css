@@ -1,0 +1,21 @@
+.title {
+    display: flex;
+    gap: 20px;
+    align-items: baseline;
+}
+
+.descricao p {
+    font-size: 16px;
+    text-align: justify;
+    line-height: 20px;
+}
+
+.show-project-container {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.150);
+    gap: 20px;
+    width: 30%;
+}

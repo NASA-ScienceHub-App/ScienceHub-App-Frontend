@@ -1,14 +1,14 @@
 import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
 import { Button, Layout, theme } from "antd";
 import React, { useState } from "react";
-import Sidebar from "../Sidebar/Sidebar";
+import Sidebar from "../../components/Sidebar/Sidebar";
 
 const { Header, Sider, Content } = Layout;
 
 import "./styles.css";
 import Projects from "../Projects/Projects";
 
-export default function Home({ chilldren }) {
+export default function Home({ chilldren, scroll = false }) {
     const [collapsed, setCollapsed] = useState(false);
     const {
         token: { colorBgContainer },
@@ -17,7 +17,7 @@ export default function Home({ chilldren }) {
     return (
         <Layout className="home-container">
             <Sidebar collapsed={collapsed} />
-            <Layout>
+            <Layout className="container-absolute-layout">
                 <Header
                     style={{
                         padding: 0,
@@ -41,7 +41,7 @@ export default function Home({ chilldren }) {
                         }}
                     />
                 </Header>
-                <Content
+                {!scroll && <Content
                     style={{
                         margin: "24px 16px",
                         padding: 24,
@@ -50,7 +50,9 @@ export default function Home({ chilldren }) {
                     }}
                 >
                     {chilldren}
-                </Content>
+                </Content>}
+
+                {scroll && chilldren}
             </Layout>
         </Layout>
     );

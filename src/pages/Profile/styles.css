@@ -1,0 +1,29 @@
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.user-avatar-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 50px;
+    margin: 20px 0px;
+}
+
+.progress-bar {
+    width: 20%;
+}
+
+.information-user {
+    line-height: 30px;
+}
+
+.show-project-profile {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    /* justify-content: center; */
+    gap: 30px;
+}
